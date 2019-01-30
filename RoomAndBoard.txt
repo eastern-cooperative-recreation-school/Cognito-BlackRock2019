@@ -1,0 +1,33 @@
+=
+if StaffDiscountCode = "ECRSwork485" then 0 else
+(
+    if StaffDiscountCode = "ECRSleader192" then 0 else 
+    (
+        if HousingLocation = "No housing needed (Saturday evening only)" then 30 else
+        (
+            if (Under13 and Age < 13) then
+            (
+                if Age < 3 then 0 else
+                (
+                    if HousingLocation = "Hotel style rooms" then 190 else
+                    (
+                        if HousingLocation = "Bunkhouse cabins (5 bunk beds to a cabin)" then 160 else
+                        (
+                            if HousingLocation != null then 0 else -1
+                        )
+                    )
+                )
+            )
+            else
+            (
+                if HousingLocation = "Hotel style rooms" then 340 else
+                (
+                    if HousingLocation = "Bunkhouse cabins (5 bunk beds to a cabin)" then 240 else
+                    (
+                        if HousingLocation != null then 0 else -1
+                    )
+                )
+            ) * (Newcomer and !Under13  ? .5 : 1)
+        )
+    )
+)
