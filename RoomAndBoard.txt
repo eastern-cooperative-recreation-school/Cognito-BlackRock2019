@@ -27,7 +27,7 @@ if StaffDiscountCode = "ECRSwork485" then 0 else
                         if HousingLocation != null then 0 else -1
                     )
                 )
-            ) * (Newcomer and !Under13  ? .5 : 1)
+            ) * (Newcomer and !Under13  ? .5 : (StaffDiscountCode = "ECRSboard823" ? .8 : 1))
         )
     )
 )
